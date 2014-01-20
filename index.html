@@ -3,8 +3,81 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Fix Drag Tablet</title>
+	<link rel="stylesheet" href="style/style.css">
+	<!-- Javascript: LIBS -->
+	<script src="javascript/libs/jquery.js"></script>
+	<script src="javascript/libs/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="javascript/libs/jquery.ui.touch.punch.js"></script>
+	<script src="javascript/libs/taphold.js"></script>
+	
 </head>
 <body>
+<ul class="sortable">
+	<li class="sort-card">1</li>
+	<li class="sort-card">2</li>
+	<li class="sort-card">3</li>
+	<li class="sort-card">4</li>
+	<li class="sort-card">5</li>
+	<li class="sort-card">6</li>
+	<li class="sort-card">7</li>
+	<li class="sort-card">1</li>
+	<li class="sort-card">2</li>
+	<li class="sort-card">3</li>
+	<li class="sort-card">4</li>
+	<li class="sort-card">5</li>
+	<li class="sort-card">6</li>
+	<li class="sort-card">7</li>
+	<li class="sort-card">1</li>
+	<li class="sort-card">2</li>
+	<li class="sort-card">3</li>
+	<li class="sort-card">4</li>
+	<li class="sort-card">5</li>
+	<li class="sort-card">6</li>
+	<li class="sort-card">7</li>
+	<li class="sort-card">1</li>
+	<li class="sort-card">2</li>
+	<li class="sort-card">3</li>
+	<li class="sort-card">4</li>
+	<li class="sort-card">5</li>
+	<li class="sort-card">6</li>
+	<li class="sort-card">7</li>
+</ul>
 
+<script>
+ 
+ var dragFlag = false;
+
+	$(".sortable").sortable({
+		delay: 250,
+		scroll: true,
+        containment: "document",
+		start:function(event, ui){
+			
+		},
+		stop:function(event, ui){
+			dragFlag = false;
+			
+			$(".sortable li").css({
+                            'transition': 'all 0s',
+                            'transform': 'scale(1)'
+                        });
+		},
+		update:function(event, ui){
+			dragFlag = false;
+			$(".sortable li").css({
+                            'transition': 'all 0s',
+                            'transform': 'scale(1)'
+                        });
+		}
+	});
+
+	$(".sortable li").on("taphold", {duration :200}, function(){
+		dragFlag = true;
+		$(this).css({
+             'transform': 'scale(1.1)'
+        });	
+	});
+
+</script>
 </body>
 </html>
