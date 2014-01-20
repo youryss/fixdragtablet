@@ -29,14 +29,16 @@
 */
   function simulateMouseEvent (event, simulatedType) {
 
-    // console.log(dashboard.dragFlag);
-
     
     // Ignore multi-touch events
       if (event.originalEvent.touches.length > 1) {
         return;
       }
 
+
+      //here's my little change on the touch punch plugin 
+      // the dragFlag will set to true if the user hold the card for 2 mile seconds
+      // and the user will be able to drag the elements around
       if(dragFlag == true){
         event.preventDefault();
       }

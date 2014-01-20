@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Fix Drag Tablet</title>
 	<link rel="stylesheet" href="style/style.css">
+	
 	<!-- Javascript: LIBS -->
 	<script src="javascript/libs/jquery.js"></script>
 	<script src="javascript/libs/jquery-ui-1.10.4.custom.min.js"></script>
@@ -44,35 +45,37 @@
 </ul>
 
 <script>
- 
+ //This varible will help us when the jquery.ui.touch.punch.js start its magic
  var dragFlag = false;
 
+ 	//starting the sortable ui jquery, no secrets.
 	$(".sortable").sortable({
+		// this delay will help not letting the cards make a move when the user is scrolling the page.
 		delay: 250,
+		//some basics sets
 		scroll: true,
         containment: "document",
-		start:function(event, ui){
-			
-		},
+        //onces you drop your element we have to set the dragFlag varible to false
 		stop:function(event, ui){
 			dragFlag = false;
-			
-			$(".sortable li").css({
-                            'transition': 'all 0s',
-                            'transform': 'scale(1)'
-                        });
+			// Here we return the card to the original scale
+			$(".sortable li").css({ 'transition': 'all 0s','transform': 'scale(1)'});
 		},
+		//here is just to make sure that when you drop a card, it will return to the original scale and setting the dragFlag to false
 		update:function(event, ui){
 			dragFlag = false;
-			$(".sortable li").css({
-                            'transition': 'all 0s',
-                            'transform': 'scale(1)'
-                        });
+			$(".sortable li").css({ 'transition': 'all 0s','transform': 'scale(1)'});
 		}
 	});
 
+	// Here I'm using a good jquery plugin called taphold that fires a function after you hold a finger over the element for x mileseconds
+
+	// to enable the drag and drop the user must hold the card over 2 mileseconds, the card will be bigger and the user will be able to drag the card around
 	$(".sortable li").on("taphold", {duration :200}, function(){
+		//setting the dragFlag to true
 		dragFlag = true;
+
+		//making the card bigger
 		$(this).css({
              'transform': 'scale(1.1)'
         });	
