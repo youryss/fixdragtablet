@@ -1,8 +1,8 @@
-Fix Drag and drop on Tablet
+Fix Drag and drop on Tablet (javascript and html)
 ========================
 
 ##What?
-You can drag and drop elements on ipad and scroll the page as well
+You can drag and drop elements on ipad and scroll the page as well with
 
 ##WHY?
 I created this fix because I couldn't find something that works for my app.
@@ -19,3 +19,9 @@ I used jquery, Jquery Ui (drag and drop feature), Ui jquery touch punch (This pl
 
 ##PROCESS
 The only think that I changed on Jquery touch punch was the line 42 that I had to create a flag when returns true if the user hold the element(in this case a div) the element will be bigger and then the user will be able to drag the element round. Onces he drop the element the drag and drop will be disbale and the flag will be false letting the user scroll the page without moving a card
+
+##Examples
+
+Here's two videos that I made using ipad mini to test the fix
+[Video one](https://www.youtube.com/watch?v=Zb3Mmt-HMpQ)
+[Video two](https://www.youtube.com/watch?v=ntSOCv_4eWE)
